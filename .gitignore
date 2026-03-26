@@ -1,0 +1,6 @@
+gnlTester/
+*.out
+*.o
+txt
+.vscode
+main.c
