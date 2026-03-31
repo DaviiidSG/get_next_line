@@ -6,12 +6,13 @@
 /*   By: dserrano <dserrano@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 22:15:49 by dserrano          #+#    #+#             */
-/*   Updated: 2026/03/21 13:21:54 by dserrano         ###   ########.fr       */
+/*   Updated: 2026/03/31 20:52:27 by dserrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
 # include <stdlib.h>
 # include <unistd.h>
 # include "buffer_size.h"

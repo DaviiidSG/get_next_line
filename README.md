@@ -23,7 +23,7 @@ The **get_next_line** project aims to implement a function that reads a line end
 
 			if (fd == -1)
 				return (1);
-			while (line = get_next_line(fd))
+			while ((line = get_next_line(fd)))
 			{
 				printf("%s", line);
 				free(line);

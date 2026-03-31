@@ -6,7 +6,7 @@
 /*   By: dserrano <dserrano@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 22:31:38 by dserrano          #+#    #+#             */
-/*   Updated: 2026/03/21 00:18:03 by dserrano         ###   ########.fr       */
+/*   Updated: 2026/03/31 21:13:21 by dserrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ ssize_t	srch_newline(const char *s)
 	size_t	i;
 
 	i = 0;
-	while (s[i])
+	while (s && s[i])
 	{
 		if (s[i] == '\n')
 			return (i);

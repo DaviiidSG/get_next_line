@@ -6,7 +6,7 @@
 /*   By: dserrano <dserrano@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 22:12:02 by dserrano          #+#    #+#             */
-/*   Updated: 2026/03/21 14:16:48 by dserrano         ###   ########.fr       */
+/*   Updated: 2026/03/31 22:37:42 by dserrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,18 @@ static char	*ret_line(char **buff, ssize_t n_pos, int isend)
 	return (line);
 }
 
-static int	free_all(char *ptr1, char *ptr2)
+static int	free_all(char **ptr1, char **ptr2)
 {
-	free(ptr1);
-	free(ptr2);
+	if (ptr1)
+	{
+		free(*ptr1);
+		*ptr1 = NULL;
+	}
+	if (ptr2)
+	{
+		free(*ptr2);
+		*ptr2 = NULL;
+	}
 	return (-1);
 }
 
@@ -65,15 +73,15 @@ static int	read_and_append(int fd, char **buff)
 
 	temp_buff = malloc((BUFFER_SIZE + 1) * sizeof(*temp_buff));
 	if (!temp_buff)
-		return (free_all(*buff, NULL));
+		return (free_all(buff, NULL));
 	bytes = read(fd, temp_buff, BUFFER_SIZE);
 	if (-1 == bytes || (!bytes && !(**buff)))
-		return (free_all(*buff, temp_buff));
+		return (free_all(buff, &temp_buff));
 	else if (!bytes && **buff)
-		return (free(temp_buff), 1);
+		return (free_all(NULL, &temp_buff), 1);
 	temp_buff[bytes] = '\0';
 	temp_join = ft_strjoin(*buff, temp_buff);
-	free_all(*buff, temp_buff);
+	free_all(buff, &temp_buff);
 	if (!temp_join)
 		return (-1);
 	*buff = temp_join;
