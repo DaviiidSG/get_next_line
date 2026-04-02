@@ -10,7 +10,7 @@ int main(void)
 
     // 1. Setup: Create a real file with some text
     fd = open("test.txt", O_CREAT | O_RDWR | O_TRUNC, 0644);
-    write(fd, "01234567890123456789012345678901234567890", 41);
+    write(fd, "Lorem Ipsum", 11);
     close(fd);
 
     // 2. Initial Call: Get static_buff allocated

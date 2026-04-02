@@ -6,17 +6,17 @@
 /*   By: dserrano <dserrano@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 22:12:02 by dserrano          #+#    #+#             */
-/*   Updated: 2026/03/31 22:37:42 by dserrano         ###   ########.fr       */
+/*   Updated: 2026/04/02 15:14:35 by dserrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*del_line(char *buff, ssize_t limit)
+static char	*del_line(char *buff, ssize_t limit, size_t buff_len)
 {
 	char	*new_buff;
 
-	new_buff = ft_substr(buff, limit + 1, ft_strlen(buff) - limit - 1);
+	new_buff = ft_substr(buff, limit + 1, buff_len - limit - 1, buff_len);
 	free(buff);
 	if (!new_buff)
 		return (NULL);
@@ -26,6 +26,7 @@ static char	*del_line(char *buff, ssize_t limit)
 static char	*ret_line(char **buff, ssize_t n_pos, int isend)
 {
 	char	*line;
+	size_t	buff_len;
 
 	if (isend)
 	{
@@ -37,10 +38,11 @@ static char	*ret_line(char **buff, ssize_t n_pos, int isend)
 	}
 	else
 	{
-		line = ft_substr(*buff, 0, n_pos + 1);
+		buff_len = ft_strlen(*buff);
+		line = ft_substr(*buff, 0, n_pos + 1, buff_len);
 		if (!line)
 			return (NULL);
-		*buff = del_line(*buff, n_pos);
+		*buff = del_line(*buff, n_pos, buff_len);
 		if (!(*buff))
 		{
 			free(line);
@@ -69,6 +71,7 @@ static int	read_and_append(int fd, char **buff)
 {
 	char		*temp_buff;
 	char		*temp_join;
+	size_t		buff_len;
 	ssize_t		bytes;
 
 	temp_buff = malloc((BUFFER_SIZE + 1) * sizeof(*temp_buff));
@@ -80,7 +83,8 @@ static int	read_and_append(int fd, char **buff)
 	else if (!bytes && **buff)
 		return (free_all(NULL, &temp_buff), 1);
 	temp_buff[bytes] = '\0';
-	temp_join = ft_strjoin(*buff, temp_buff);
+	buff_len = ft_strlen(*buff);
+	temp_join = ft_strjoin(*buff, temp_buff, buff_len, bytes);
 	free_all(buff, &temp_buff);
 	if (!temp_join)
 		return (-1);
