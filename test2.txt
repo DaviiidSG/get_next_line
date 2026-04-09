@@ -1,0 +1,6 @@
+Este es el test 2:
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Aliquam rhoncus, nulla in lobortis ultrices, urna mi fringilla justo, vitae pharetra lacus nisi pharetra libero.
+Sed ut pellentesque tortor.
+Curabitur vel odio imperdiet, malesuada turpis varius, luctus dui.
+Donec in fringilla ex, sed placerat arcu. Cras non odio nec neque ullamcorper posuere. In hac habitasse platea dictumst. Cras nec orci in metus dictum interdum. Nulla est massa, dapibus a tortor non, ultrices vehicula magna. Nam iaculis felis vitae velit maximus vestibulum.
