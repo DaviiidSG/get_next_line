@@ -6,16 +6,24 @@
 /*   By: dserrano <dserrano@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 22:15:49 by dserrano          #+#    #+#             */
-/*   Updated: 2026/04/03 21:45:11 by dserrano         ###   ########.fr       */
+/*   Updated: 2026/04/09 21:04:08 by dserrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# if BUFFER_SIZE > 2147483646 || BUFFER_SIZE <= 0
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 2147483646
+# endif
+
 # include <stdlib.h>
 # include <unistd.h>
-# include "buffer_size.h"
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
