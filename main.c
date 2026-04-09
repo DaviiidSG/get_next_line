@@ -14,10 +14,10 @@ int main(void)
     // close(fd);
 
     // 2. Initial Call: Get static_buff allocated
-    fd = open("get_next_line.c", O_RDONLY);
+    fd = open("test.txt", O_RDONLY);
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		printf("%s", line);
+		printf("%s\n", line);
 		free(line);
 	}
 
