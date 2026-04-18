@@ -3,9 +3,11 @@
 The **get_next_line** project aims to implement a function that reads a line ending with a newline character (\n) from a file descriptor. This project is designed to help understand the concept of static variables in C and dynamic memory management.
 ## Project structure
 - `get_next_line.c`: Main logic and management of the static variable.
-- `get_next_line_utils.c`: String manipulation functions (`strlen`, `strdup`, `strjoin`, `substr`).
-- `get_next_line.h`: Prototypes and definitions.
-- `buffer_size.h`: Advanced management and protection of the `BUFFER_SIZE` macro.
+- `get_next_line_utils.c`: String manipulation functions.
+- `get_next_line.h`: Prototypes, definitions, management and protection of the `BUFFER_SIZE` macro.
+- `get_next_line_bonus.c`: Same as `get_next_line.c`, but it can handle multiple file descriptors.
+- `get_next_line_utils_bonus.c`: Same as `get_next_line_utils_bonus.c`.
+- `get_next_line_bonus.h`: Same as `get_next_line_bonus.h`.
 # Instructions
 ## Compilation and use
 1. Copy the `.c` and `.h` files to your repo.
@@ -30,9 +32,10 @@ The **get_next_line** project aims to implement a function that reads a line end
 			}
 			return (0);
 		}
+4. For the program to be able to handle multiple file descriptors, it must be compiled as follows: `cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line_bonus.c get_next_line_utils_bonus.c main.c -o bonus_test`
 
 # Resources
-- [Declaración de variables](https://www.it.uc3m.es/pbasanta/asng/course_notes/variables_es.html)
+- [Variables declaration](https://www.it.uc3m.es/pbasanta/asng/course_notes/variables_es.html)
 - C Programming A Modern Approach 2nd edition. K. N. King
 ## Use of AI
 In this project, AI was used to improve the README file.
@@ -47,5 +50,5 @@ The central element is a static variable of type `static char *static_buff`.
 - **Static variable**: Unlike local variables, the static variable resides in the data segment, which allows it to retain its value across different calls to `get_next_line`. This is essential for storing any characters left over after reading a line, allowing the next call to start exactly where the previous one ended.
 - **Memory Management**: Since the size of the line is unknown in advance, the buffer grows dynamically on the heap.
 ## Error Handling and Edge Cases
-- **Variable BUFFER_SIZE**: The code is designed to handle sizes ranging from 1 to very large values (limited by `buffer_size.h`).
+- **Variable BUFFER_SIZE**: The code is designed to handle sizes ranging from 1 to very large values (limited in header files).
 - **Memory Leak Management**: I have implemented a helper function called `free_all` to ensure that, whether a read error occurs or the end of the file is reached, all allocated memory is properly released, thereby preventing memory leaks.
