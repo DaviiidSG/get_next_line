@@ -4,10 +4,10 @@ The **get_next_line** project aims to implement a function that reads a line end
 ## Project structure
 - `get_next_line.c`: Main logic and management of the static variable.
 - `get_next_line_utils.c`: String manipulation functions.
-- `get_next_line.h`: Prototypes, definitions, management and protection of the `BUFFER_SIZE` macro.
+- `get_next_line.h`: Prototypes, definitions and management of the `BUFFER_SIZE`.
 - `get_next_line_bonus.c`: Same as `get_next_line.c`, but it can handle multiple file descriptors.
 - `get_next_line_utils_bonus.c`: Same as `get_next_line_utils_bonus.c`.
-- `get_next_line_bonus.h`: Same as `get_next_line_bonus.h`.
+- `get_next_line_bonus.h`: Same as `get_next_line_bonus.h` but it contains the definition of MAX_FD.
 # Instructions
 ## Compilation and use
 1. Copy the `.c` and `.h` files to your repo.
@@ -50,5 +50,5 @@ The central element is a static variable of type `static char *static_buff`.
 - **Static variable**: Unlike local variables, the static variable resides in the data segment, which allows it to retain its value across different calls to `get_next_line`. This is essential for storing any characters left over after reading a line, allowing the next call to start exactly where the previous one ended.
 - **Memory Management**: Since the size of the line is unknown in advance, the buffer grows dynamically on the heap.
 ## Error Handling and Edge Cases
-- **Variable BUFFER_SIZE**: The code is designed to handle sizes ranging from 1 to very large values (limited in header files).
+- **Variable BUFFER_SIZE**: The code is designed to handle sizes ranging from 1 to very large values, if `BUFFER_SIZE` if `BUFFER_SIZE` is not specified at compilation, it is automatically set to `42`.
 - **Memory Leak Management**: I have implemented a helper function called `free_all` to ensure that, whether a read error occurs or the end of the file is reached, all allocated memory is properly released, thereby preventing memory leaks.

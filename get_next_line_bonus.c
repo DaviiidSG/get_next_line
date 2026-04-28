@@ -6,7 +6,7 @@
 /*   By: dserrano <dserrano@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 01:04:04 by dserrano          #+#    #+#             */
-/*   Updated: 2026/04/10 01:29:00 by dserrano         ###   ########.fr       */
+/*   Updated: 2026/04/28 21:08:33 by dserrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ static int	read_and_append(int fd, char **buff, size_t buff_len)
 
 char	*get_next_line(int fd)
 {
-	static char	*static_buff[1024];
+	static char	*static_buff[MAX_FD];
 	size_t		buff_len;
 	ssize_t		newline_pos;
 	int			err_flag;
 
-	if (fd < 0 || fd >= 1024)
+	if (fd < 0 || fd >= MAX_FD)
 		return (NULL);
 	if (!(static_buff[fd]))
 	{

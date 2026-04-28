@@ -6,7 +6,7 @@
 /*   By: dserrano <dserrano@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 01:04:27 by dserrano          #+#    #+#             */
-/*   Updated: 2026/04/10 01:32:15 by dserrano         ###   ########.fr       */
+/*   Updated: 2026/04/28 21:07:12 by dserrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,7 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# if BUFFER_SIZE <= 0
-#  undef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
-
-# if BUFFER_SIZE > 2147483646
-#  undef BUFFER_SIZE
-#  define BUFFER_SIZE 2147483646
-# endif
+# define MAX_FD 1024
 
 # include <stdlib.h>
 # include <unistd.h>
