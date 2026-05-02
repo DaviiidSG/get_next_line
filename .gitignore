@@ -3,4 +3,5 @@
 .vscode
 gnlTester/
 *.txt
+!el_quijote.txt
 main.c
