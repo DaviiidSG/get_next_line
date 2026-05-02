@@ -6,7 +6,7 @@
 /*   By: dserrano <dserrano@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 22:15:49 by dserrano          #+#    #+#             */
-/*   Updated: 2026/04/28 21:02:06 by dserrano         ###   ########.fr       */
+/*   Updated: 2026/05/02 19:08:40 by dserrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
-ssize_t	srch_newline_and_len(const char *s, size_t *buff_len);
+ssize_t	srch_newline_and_len(const char *s, size_t start, size_t *buff_len);
 char	*ft_substr(char const *s, unsigned int start, size_t len, size_t s_len);
 char	*ft_strjoin(char const *s1, char const *s2,
 			size_t s1_len, size_t s2_len);

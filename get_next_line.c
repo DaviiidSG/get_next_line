@@ -6,7 +6,7 @@
 /*   By: dserrano <dserrano@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 22:12:02 by dserrano          #+#    #+#             */
-/*   Updated: 2026/04/03 21:55:26 by dserrano         ###   ########.fr       */
+/*   Updated: 2026/05/02 18:15:56 by dserrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ char	*get_next_line(int fd)
 		if (!static_buff)
 			return (NULL);
 	}
-	newline_pos = srch_newline_and_len(static_buff, &buff_len);
+	newline_pos = srch_newline_and_len(static_buff, 0, &buff_len);
 	while (-1 == newline_pos)
 	{
 		err_flag = read_and_append(fd, &static_buff, buff_len);
@@ -113,7 +113,7 @@ char	*get_next_line(int fd)
 			return (NULL);
 		else if (err_flag)
 			return (ret_line(&static_buff, newline_pos, 1, buff_len));
-		newline_pos = srch_newline_and_len(static_buff, &buff_len);
+		newline_pos = srch_newline_and_len(static_buff, buff_len, &buff_len);
 	}
 	return (ret_line(&static_buff, newline_pos, 0, buff_len));
 }
